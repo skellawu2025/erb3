@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% load humanize %}{% block content %}
+{% load static %}
+
+                  <!-- The Modal -->
+                  <div class="container">
+                    <div class="card-content">
+
+                        <!-- Modal Header -->
+                        <div class="card-body">
+                          <h4 class="modal-title"> {{course.medium}}</h4>
+                        
+                        <!-- Modal body -->
+                        <div>
+                          {{course.admission_criteria}}
+                        </div>
+                        
+                        <!-- Modal footer -->
+                        <div>
+                          <a href="{% url "index.html" %}" class="btn btn-danger">Close</button>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+
+                  {% endblock %}

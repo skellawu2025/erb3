@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+     #keyform {
+      border: 0px solid;
+      padding-top: 50px;
+      padding-right: 150px;
+      padding-bottom: 50px;
+      padding-left: 150px;
+    }
+    </style>
+
+<!-- Breadcrumb -->
+<section id="bc" class="mt-3">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="breadcrumb-item active">About</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<section id="showcase-inner" class="py-5 text-white">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <h1 class="display-4">About Shine Education</h1>
+                <p> Welcome to Shine Education, a nurturing and inspiring learning environment where children grow, explore, and discover the world through the Montessori approach. Our center is dedicated to fostering a love for learning by allowing children to develop at their own pace in a natural, engaging, and joyful setting. </p
+                    >
+                
+                <p> Our mission is simple yet profound: Let children learn from nature and learn for fun. We believe that education should be a joyful journey, not a rigid routine. Through gardening, nature walks, creative play, and Montessori-based activities, children develop a deep appreciation for the world around them while cultivating a lifelong passion for discovery. </p
+                    >
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Work -->
+<section id="work" class="bg-dark text-white text-center">
+    
+        <span>
+            <img src="{% static 'img/p_01.png' %}" alt="president" class="rounded-circle mb-3" style="height: 230px; width: 230px" />
+        </span>
+        <div id="keyform">
+        <h3>Learning Target:</h3>
+        <!-- Other curriculum items -->
+          
+        <p>Welcome to Shine Education Center, where young minds blossom! Our nurturing environment fosters creativity, curiosity, and early llearning through play-based activities. With experienced educators and a child-friendly space, we focus on social, emotional, and cognitive development in a fun, safe setting. Through storytelling, music, or hands-on exploration, we inspire toddlers to discover the world joyfully. Join us in laying a strong foundation for lifelong learning!</p>
+        </div>  
+   
+
+    <hr />
+</section>
+<!-- address-->
+<section id="work" class="bg-dark text-white text-center">
+    
+    <span>
+        <img src="{% static 'img/np_local.png' %}" alt="president" class="rounded mb-3" style="height: 300px; width: 400px" />
+    </span>
+        <div id="keyform">
+        <h3>Center Locations :</h3><br/>
+        <!-- Other curriculum items -->
+            <h3>MTR</h3>
+            <p>North Point Station  take Exit B3</p>
+            <p>Quarry Bay Station  take Exit C</p>
+            <p>
+            Walk to Healthy Street West and Pak Fuk Road intersection, near Chinese Methodist School (Tanner Hill). This takes about 7 minutes from North Point Station, 9 minutes from Quarry Bay Station.
+            Take the Bedford Gardens elevator up to reach podium level.</p>
+            <p>
+            The school entrance is a 1-minute walk across the residential complex.</p>
+            <br/>
+            <h3>VISITOR PARKING</h3>
+            <p>There is no visitor parking at Bedford Gardens. Public parking is available at Fitfort Car Park on Tsat Tzi Mui Road.</p>
+            <h3>Campus</h3>
+            <p>G/F 16 Tin Hau Temple Road, Tin Hau, Hong Kong</p>
+            <p>Share this page (button)</p>
+            </div>
+    
+    <hr />
+    
+</section>
+
+<!-- Team -->
+<section id="team" class="py-5">
+    <div class="container">
+        <h2 class="text-center">Our Team</h2>
+        <div class="row text-center">
+            {% if tutors %}
+                {% for tutor in tutors %}
+                    <div class="col-md-4">
+                        {% if tutor.photo %}
+                            <img src="{{ tutor.photo.url }}" alt="{{ tutor.name }}" class="rounded-circle mb-3" style="height: 230px; width: 230px" />
+                        {% else %}
+                            <img src="{% static 'img/default_tutor.jpg' %}" alt="Default" class="rounded-circle mb-3" style="height: 230px; width: 230px" />
+                        {% endif %}
+                        <h4>{{ tutor.name }}</h4>
+                        <p class="text-success">
+                            {% if tutor.is_registered %}
+                                <i class="fas fa-award text-success mb-3"></i> Registered Tutor
+                            {% else %}
+                                Tutor
+                            {% endif %}
+                        </p>
+                        <hr />
+                        <p><i class="fas fa-phone"></i> {{ tutor.phone|default:"No phone" }}</p>
+                        <p><i class="fas fa-envelope-open"></i> {{ tutor.email|default:"No email" }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="col-md-12">
+                    <p>No tutors available.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}
